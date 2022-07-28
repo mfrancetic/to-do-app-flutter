@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 
 class TaskCheckbox extends StatelessWidget {
   const TaskCheckbox(
-      {Key? key,
-      required this.checkboxState,
-      required this.toggleCheckboxState})
+      {Key? key, required this.isChecked, required this.checkboxCallback})
       : super(key: key);
 
-  final bool checkboxState;
-  final Function toggleCheckboxState;
+  final bool isChecked;
+  final Function checkboxCallback;
 
   @override
   Widget build(BuildContext context) {
     return Checkbox(
-        value: checkboxState,
+        value: isChecked,
         activeColor: Colors.lightBlueAccent,
         onChanged: (newValue) {
-          toggleCheckboxState(newValue);
+          checkboxCallback(newValue);
         });
   }
 }
