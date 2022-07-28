@@ -13,9 +13,19 @@ class TasksScreen extends StatelessWidget {
           backgroundColor: Colors.lightBlueAccent,
           onPressed: (() {
             showModalBottomSheet(
-                context: context,
-                // anonymous function, widget build function, that takes in context
-                builder: (context) => const AddTaskScreen());
+              context: context,
+              // modal will now take up the full screen (default is half of the screen)
+              isScrollControlled: true,
+              // builder: anonymous function, widget build function, that takes in context
+              // AddTaskScreen will now sit just above the keyboard, with a padding
+              builder: (context) => SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom),
+                  child: const AddTaskScreen(),
+                ),
+              ),
+            );
           }),
           child: const Icon(
             Icons.add,
