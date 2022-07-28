@@ -21,7 +21,7 @@ class _TasksViewState extends State<TasksView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TasksAppBar(),
+        TasksAppBar(tasksNumber: widget.tasks.length),
         Expanded(
           child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),

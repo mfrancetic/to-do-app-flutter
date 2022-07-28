@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TasksAppBar extends StatelessWidget {
-  const TasksAppBar({Key? key}) : super(key: key);
+  const TasksAppBar({Key? key, required this.tasksNumber}) : super(key: key);
+
+  final int tasksNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +12,8 @@ class TasksAppBar extends StatelessWidget {
           top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          CircleAvatar(
+        children:  [
+          const CircleAvatar(
             radius: 30.0,
             backgroundColor: Colors.white,
             child: Icon(
@@ -20,10 +22,10 @@ class TasksAppBar extends StatelessWidget {
               color: Colors.lightBlueAccent,
             ),
           ),
-          SizedBox(
+         const  SizedBox(
             height: 10.0,
           ),
-          Text(
+        const  Text(
             'Todoey',
             style: TextStyle(
                 color: Colors.white,
@@ -31,8 +33,8 @@ class TasksAppBar extends StatelessWidget {
                 fontWeight: FontWeight.w700),
           ),
           Text(
-            '12 Tasks',
-            style: TextStyle(color: Colors.white, fontSize: 15.0),
+            '$tasksNumber Tasks',
+            style: const TextStyle(color: Colors.white, fontSize: 15.0),
           ),
         ],
       ),
