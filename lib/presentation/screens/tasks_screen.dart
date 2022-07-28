@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todoey/models/Task.dart';
 import 'package:flutter_todoey/presentation/screens/add_task_screen.dart';
 import 'package:flutter_todoey/presentation/screens/tasks_view.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
   const TasksScreen({Key? key}) : super(key: key);
+
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Task> tasks = [
+    Task(name: 'Buy milk'),
+    Task(name: 'Buy eggs'),
+    Task(name: 'Buy bread'),
+  ];
+  void toggleIsChecked(int index) {
+    setState(() {
+      tasks[index].toggleDone();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +48,7 @@ class TasksScreen extends StatelessWidget {
             Icons.add,
             color: Colors.white,
           )),
-      body: const TasksView(),
+      body: TasksView(tasks: tasks, checkboxCallback: toggleIsChecked),
     );
   }
 }
