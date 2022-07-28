@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todoey/presentation/widgets/tasks_list.dart';
 
 class TasksView extends StatelessWidget {
   const TasksView({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class TasksView extends StatelessWidget {
           padding: const EdgeInsets.only(
               top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               CircleAvatar(
                 radius: 30.0,
@@ -41,12 +43,13 @@ class TasksView extends StatelessWidget {
         ),
         Expanded(
           child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0))),
-              child: ListView()),
+              child: const TasksList()),
         ),
       ],
     );
