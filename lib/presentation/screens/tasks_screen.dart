@@ -22,6 +22,12 @@ class _TasksScreenState extends State<TasksScreen> {
     });
   }
 
+  void addTask(String title) {
+    setState(() {
+      tasks.add(Task(name: title));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +45,9 @@ class _TasksScreenState extends State<TasksScreen> {
                 child: Container(
                   padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: const AddTaskScreen(),
+                  child: AddTaskScreen(
+                    addTaskCallback: addTask,
+                  ),
                 ),
               ),
             );

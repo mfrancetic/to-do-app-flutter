@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({Key? key}) : super(key: key);
+class AddTaskScreen extends StatefulWidget {
+  AddTaskScreen({Key? key, required this.addTaskCallback}) : super(key: key);
+
+  final Function addTaskCallback;
+
+  @override
+  State<AddTaskScreen> createState() => _AddTaskScreenState();
+}
+
+class _AddTaskScreenState extends State<AddTaskScreen> {
+  final textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +29,10 @@ class AddTaskScreen extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.lightBlueAccent, fontSize: 30),
           ),
-          const TextField(
+          TextField(
             autofocus: true,
             textAlign: TextAlign.center,
+            controller: textEditingController,
           ),
           const SizedBox(
             height: 20,
@@ -33,6 +43,7 @@ class AddTaskScreen extends StatelessWidget {
                 onPrimary: Colors.white,
               ),
               onPressed: () {
+                widget.addTaskCallback(textEditingController.text);
                 Navigator.pop(context);
               },
               child: const Text(
@@ -42,5 +53,11 @@ class AddTaskScreen extends StatelessWidget {
         ]),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
   }
 }
