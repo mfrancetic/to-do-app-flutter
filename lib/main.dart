@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todoey/presentation/screens/tasks_screen.dart';
+import 'package:flutter_todoey/provider/task_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const ToDoApp());
@@ -10,8 +12,11 @@ class ToDoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: TasksScreen(),
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => TaskModel())],
+      child: const MaterialApp(
+        home: TasksScreen(),
+      ),
     );
   }
 }
