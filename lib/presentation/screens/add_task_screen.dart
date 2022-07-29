@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todoey/provider/task_model.dart';
+import 'package:flutter_todoey/models/task_data.dart';
 import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatefulWidget {
@@ -43,7 +43,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 onPrimary: Colors.white,
               ),
               onPressed: () {
-                context.read<TaskModel>().addTask(textEditingController.text);
+                context.read<TaskData>().addTask(textEditingController.text);
                 Navigator.pop(context);
               },
               child: const Text(

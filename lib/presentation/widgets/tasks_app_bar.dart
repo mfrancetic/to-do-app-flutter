@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todoey/provider/task_model.dart';
+import 'package:flutter_todoey/models/task_data.dart';
 import 'package:provider/provider.dart';
 
 class TasksAppBar extends StatelessWidget {
@@ -7,8 +7,6 @@ class TasksAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int tasksNumber = context.watch<TaskModel>().tasks.length;
-
     return Container(
       padding: const EdgeInsets.only(
           top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
@@ -35,7 +33,7 @@ class TasksAppBar extends StatelessWidget {
                 fontWeight: FontWeight.w700),
           ),
           Text(
-            '$tasksNumber Tasks',
+            '${context.watch<TaskData>().taskCount} Tasks',
             style: const TextStyle(color: Colors.white, fontSize: 15.0),
           ),
         ],

@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_todoey/presentation/screens/add_task_screen.dart';
 import 'package:flutter_todoey/presentation/screens/tasks_view.dart';
 
-class TasksScreen extends StatefulWidget {
+class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);
 
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
